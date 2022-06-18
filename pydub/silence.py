@@ -160,7 +160,10 @@ def split_on_silence(audio_segment, min_silence_len=1000, silence_thresh=-16, ke
     return [
         audio_segment[ max(start,0) : min(end,len(audio_segment)) ]
         for start,end in output_ranges
-    ]
+    ], [{
+        'start' : start,
+        'end' : end
+    } for start,end in output_ranges]
 
 
 def detect_leading_silence(sound, silence_threshold=-50.0, chunk_size=10):
